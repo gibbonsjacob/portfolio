@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — change these in one place to restyle the whole site.
+  Ink background + warm text + copper accent (not purple, not cream/terracotta).
+*/
+:root {
+  --ink: #0b0c0f;
+  --ink-elevated: #12141a;
+  --paper: #f2efe8;
+  --paper-muted: #a8a49a;
+  --copper: #c4784a;
+  --copper-soft: #c4784a33;
+  --line: #ffffff14;
+
+  --background: var(--ink);
+  --foreground: var(--paper);
+
+  --font-display: var(--font-syne), system-ui, sans-serif;
+  --font-body: var(--font-source-sans), system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-elevated: var(--ink-elevated);
+  --color-paper: var(--paper);
+  --color-paper-muted: var(--paper-muted);
+  --color-copper: var(--copper);
+  --color-line: var(--line);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  /* Atmosphere lives on html so it isn't covered by body paint */
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(ellipse 90% 55% at 15% -5%, rgba(196, 120, 74, 0.28), transparent 55%),
+    radial-gradient(ellipse 70% 45% at 95% 5%, rgba(40, 55, 80, 0.35), transparent 50%);
+  background-attachment: fixed;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+  background: transparent;
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fine grain overlay — sits above the wash, below content */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--copper);
+}
+
+.site-shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-content {
+  flex: 1;
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--ink) 85%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.site-header__inner,
+.site-footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+.site-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.site-brand:hover {
+  color: var(--paper);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--paper-muted);
+  transition: color 0.15s ease;
+}
+
+.site-nav a:hover {
+  color: var(--paper);
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  margin-top: auto;
+}
+
+.site-footer__inner {
+  font-size: 0.875rem;
+  color: var(--paper-muted);
+}
+
+.site-footer a {
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+.site-footer a:hover {
+  color: var(--copper);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 640px) {
+  .site-header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-content {
+    padding: 1.5rem 1.25rem 3rem;
+  }
+}
