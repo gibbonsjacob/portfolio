@@ -16,9 +16,10 @@ portfolio/
   README.md     # You are here
 ```
 
-`frontend/` is set up. `backend/` appears in Epic 7.
+`frontend/` is set up. `backend/` is the Flask API (Python deps via **uv** at the repo root).
 
 For a guided tour of Next.js folders and scripts, see [`frontend/README.md`](./frontend/README.md).
+For the API, see [`backend/README.md`](./backend/README.md).
 
 ## Stack
 
@@ -49,7 +50,33 @@ npm run dev   # usually http://localhost:3000
 
 ### Backend
 
-*(Added in Epic 7 — not set up yet.)*
+```bash
+uv sync                                          # first time (repo root → creates ./.venv)
+uv run --directory backend flask --app app run --debug --port 5001
+```
+
+Details: [`backend/README.md`](./backend/README.md).
+
+## End-to-end: contact form → SQLite
+
+This is the “piping” path — why the backend exists. The browser form POSTs JSON to Flask; Flask writes a row you can inspect.
+
+1. **Terminal A — API**
+   ```bash
+   uv run --directory backend flask --app app run --debug --port 5001
+   ```
+2. **Terminal B — site**
+   ```bash
+   cd frontend && npm run dev
+   ```
+3. Open http://localhost:3000/contact, submit the form.
+4. Confirm the row:
+   ```bash
+   curl -s http://127.0.0.1:5001/api/messages
+   ```
+   Or open that URL in a browser. You should see your name/email/message in JSON.
+
+Optional: set `NEXT_PUBLIC_API_BASE_URL` in `frontend/.env.local` (see `frontend/.env.example`). Default is already `http://127.0.0.1:5001`.
 
 ## Links
 

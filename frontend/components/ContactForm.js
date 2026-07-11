@@ -2,13 +2,17 @@
 
 import { useState } from "react";
 
-// Frontend-only contact form. Submit is mocked until Flask piping (E7/E8).
+// Browser → Flask: NEXT_PUBLIC_API_BASE_URL (default local :5001)
+const API_BASE =
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://127.0.0.1:5001";
+
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [serverMessage, setServerMessage] = useState("");
 
   function validate() {
     const next = {};
@@ -24,13 +28,47 @@ export default function ContactForm() {
     if (!validate()) return;
 
     setStatus("loading");
-    // Mock round-trip until backend exists
-    await new Promise((resolve) => setTimeout(resolve, 600));
-    setStatus("success");
-    setName("");
-    setEmail("");
-    setMessage("");
-    setErrors({});
+    setServerMessage("");
+
+    try {
+      const response = await fetch(`${API_BASE}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim(),
+        }),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        if (data.errors && typeof data.errors === "object") {
+          setErrors(data.errors);
+        }
+        setStatus("error");
+        setServerMessage(
+          data.errors
+            ? "Check the fields above and try again."
+            : "Something went wrong. Try again or use the links below.",
+        );
+        return;
+      }
+
+      setStatus("success");
+      setServerMessage("Message sent — thanks.");
+      setName("");
+      setEmail("");
+      setMessage("");
+      setErrors({});
+    } catch {
+      // Network / CORS / server down
+      setStatus("error");
+      setServerMessage(
+        "Could not reach the API. Is Flask running on port 5001?",
+      );
+    }
   }
 
   return (
@@ -86,12 +124,12 @@ export default function ContactForm() {
 
       {status === "success" && (
         <p className="contact-status contact-status--ok" role="status">
-          Form UI works. Backend wiring comes later — nothing was stored.
+          {serverMessage}
         </p>
       )}
       {status === "error" && (
         <p className="contact-status contact-status--err" role="alert">
-          Something went wrong. Try again or use the links below.
+          {serverMessage}
         </p>
       )}
     </form>

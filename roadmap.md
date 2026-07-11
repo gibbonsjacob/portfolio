@@ -42,9 +42,11 @@ Use these instead of separate Jira projects:
 | E2 — Design system & chrome | Done |
 | E3 — Home page | Done (structure; hero polish parked in [PORT-62](https://gibbonsjacob.atlassian.net/browse/PORT-62)) |
 | E4 — About | Scaffold done; copy owned by Jacob (see content tickets) |
-| E5 — Work | Scaffold in progress / done with `content/projects.js` slots |
-| E6 — Contact UI | Scaffold done (mocked submit); copy + email slots open |
-| E7–E10 | Backlog |
+| E5 — Work | Scaffold done; copy in [PORT-64](https://gibbonsjacob.atlassian.net/browse/PORT-64) |
+| E6 — Contact UI | Scaffold done; wired to Flask in E8 |
+| E7 — Backend | Flask + sqlite3 + uv workspace |
+| E8 — Piping | Form → `POST /api/contact` → SQLite |
+| E9–E10 | Backlog (hero polish [PORT-62](https://gibbonsjacob.atlassian.net/browse/PORT-62)) |
 
 ## Where to write copy
 
