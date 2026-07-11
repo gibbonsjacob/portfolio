@@ -1,0 +1,41 @@
+---
+description: Jira is backlog SoT; rich user stories; fetch only the active ticket
+alwaysApply: true
+---
+
+# Jira workflow (PORT)
+
+## Source of truth
+- Backlog lives in Jira project **PORT**, not in markdown tables.
+- [`roadmap.md`](roadmap.md) is a **bookmark only** (board URL + short pointer). Do not maintain a second detailed backlog there.
+
+## Token-conscious Jira reads
+- Do **not** pull the full PORT backlog into chat.
+- When starting or continuing work, fetch **only** the active issue (by key) or a tiny JQL slice (e.g. next To Do under the current epic).
+- Prefer one issue’s summary + description + acceptance criteria over listing dozens of tickets.
+
+## Creating new issues
+New Stories (and Features when used as delivery work) must be detailed. Use this shape:
+
+```markdown
+**User story**
+As a <who>, I want <what>, so that <why>.
+
+**Acceptance criteria**
+- [ ] ...
+- [ ] ...
+
+**Out of scope**
+- ...
+
+**Notes**
+- Files/areas likely touched, learning goals, dependencies, links
+```
+
+- Use labels for area: `frontend`, `backend`, `content`, `infra`, `design`, `later`.
+- Use **Spike** / **Research** for investigation work; still include goal, questions to answer, and done-when.
+- Do **not** bulk-rewrite existing thin tickets unless the user asks.
+
+## Status hygiene
+- Move the active issue to **In Progress** when work starts.
+- Move to **Done** when acceptance criteria are met and the user has verified (or explicitly says to close it).
