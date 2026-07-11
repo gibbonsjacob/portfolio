@@ -1,20 +1,44 @@
-// Home page → URL "/"
-// Epic 3 will turn this into a real hero; for now it just proves the chrome works.
+import Link from "next/link";
+
+// Home → "/" — typographic hero + project field strip (E3 structure)
 export default function Home() {
   return (
-    <main>
-      <p className="font-mono" style={{ color: "var(--paper-muted)", fontSize: "0.875rem" }}>
-        Epic 2 — design chrome
-      </p>
-      <h1
-        className="font-display"
-        style={{ fontSize: "clamp(2.5rem, 8vw, 4.5rem)", lineHeight: 1.05, margin: "0.5rem 0 1rem" }}
-      >
-        Jacob Gibbons
-      </h1>
-      <p style={{ maxWidth: "32rem", color: "var(--paper-muted)" }}>
-        Site shell is in place: colors, fonts, nav, and footer. Next up is a proper home hero.
-      </p>
+    <main className="home-hero">
+      <div className="home-hero__inner">
+        <h1 className="home-hero__brand">
+          <span className="home-hero__brand-line">Jacob</span>
+          <span className="home-hero__brand-line">Gibbons</span>
+        </h1>
+
+        <p className="home-hero__headline">
+          I build tools I use myself. Workout logs. Music libraries. Small
+          automations that save a week of busywork.
+        </p>
+
+        <div className="home-hero__ctas">
+          <Link href="/work" className="home-cta">
+            See the work
+          </Link>
+          <Link href="/contact" className="home-cta">
+            Say hello
+          </Link>
+        </div>
+      </div>
+
+      <div className="home-hero__field" aria-label="Selected projects">
+        <span className="home-hero__field-rule" aria-hidden="true" />
+        <p className="home-hero__field-strip font-mono">
+          <span>fitness-tracker</span>
+          <span className="home-hero__field-sep" aria-hidden="true">
+            ·
+          </span>
+          <span>songs_db</span>
+          <span className="home-hero__field-sep" aria-hidden="true">
+            ·
+          </span>
+          <span>automate_life</span>
+        </p>
+      </div>
     </main>
   );
 }
