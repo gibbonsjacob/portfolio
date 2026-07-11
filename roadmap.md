@@ -40,8 +40,9 @@ Use these instead of separate Jira projects:
 | E0 — Project foundation | Done |
 | E1 — Frontend scaffold | Done |
 | E2 — Design system & chrome | Done |
-| E3 — Home page | Next |
-| E4–E10 | Backlog |
+| E3 — Home page | Done |
+| E4 — About | In progress ([PORT-29](https://gibbonsjacob.atlassian.net/browse/PORT-29), [PORT-31](https://gibbonsjacob.atlassian.net/browse/PORT-31)) |
+| E5–E10 | Backlog |
 
 ## Parking lot
 
