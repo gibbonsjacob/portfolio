@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { home } from "@/content/home";
+import { isCopyPending } from "@/content/copy";
+import CopySlot from "@/components/CopySlot";
 
-// Home → "/" — typographic hero + project field strip (E3 structure)
+// Home → "/" — typographic hero + project field strip (structure only)
 export default function Home() {
   return (
     <main className="home-hero">
@@ -11,16 +14,19 @@ export default function Home() {
         </h1>
 
         <p className="home-hero__headline">
-          I build tools I use myself. Workout logs. Music libraries. Small
-          automations that save a week of busywork.
+          {isCopyPending(home.headline) ? (
+            <CopySlot label="home headline — content/home.js" />
+          ) : (
+            home.headline
+          )}
         </p>
 
         <div className="home-hero__ctas">
           <Link href="/work" className="home-cta">
-            See the work
+            {home.ctaWork}
           </Link>
           <Link href="/contact" className="home-cta">
-            Say hello
+            {home.ctaContact}
           </Link>
         </div>
       </div>
@@ -28,15 +34,17 @@ export default function Home() {
       <div className="home-hero__field" aria-label="Selected projects">
         <span className="home-hero__field-rule" aria-hidden="true" />
         <p className="home-hero__field-strip font-mono">
-          <span>fitness-tracker</span>
-          <span className="home-hero__field-sep" aria-hidden="true">
-            ·
-          </span>
-          <span>songs_db</span>
-          <span className="home-hero__field-sep" aria-hidden="true">
-            ·
-          </span>
-          <span>automate_life</span>
+          {home.fieldProjects.map((name, index) => (
+            <span key={name}>
+              {index > 0 && (
+                <span className="home-hero__field-sep" aria-hidden="true">
+                  {" "}
+                  ·{" "}
+                </span>
+              )}
+              <span>{name}</span>
+            </span>
+          ))}
         </p>
       </div>
     </main>

@@ -1,6 +1,8 @@
 import { Syne, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { site } from "@/content/site";
+import { isCopyPending } from "@/content/copy";
 import "./globals.css";
 
 // next/font loads these efficiently and gives us CSS variables we use in globals.css
@@ -25,7 +27,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata = {
   title: "Jacob Gibbons",
-  description: "Personal portfolio site",
+  description: isCopyPending(site.metaDescription)
+    ? "Personal portfolio site"
+    : site.metaDescription,
 };
 
 // RootLayout wraps EVERY page. Header + Footer show on all routes.

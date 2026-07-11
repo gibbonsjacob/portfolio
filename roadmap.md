@@ -40,15 +40,32 @@ Use these instead of separate Jira projects:
 | E0 — Project foundation | Done |
 | E1 — Frontend scaffold | Done |
 | E2 — Design system & chrome | Done |
-| E3 — Home page | Done |
-| E4 — About | In progress ([PORT-29](https://gibbonsjacob.atlassian.net/browse/PORT-29), [PORT-31](https://gibbonsjacob.atlassian.net/browse/PORT-31)) |
-| E5–E10 | Backlog |
+| E3 — Home page | Done (structure; hero polish parked in [PORT-62](https://gibbonsjacob.atlassian.net/browse/PORT-62)) |
+| E4 — About | Scaffold done; copy owned by Jacob (see content tickets) |
+| E5 — Work | Scaffold in progress / done with `content/projects.js` slots |
+| E6 — Contact UI | Scaffold done (mocked submit); copy + email slots open |
+| E7–E10 | Backlog |
+
+## Where to write copy
+
+All fillable prose lives under `frontend/content/`:
+
+| File | What you write |
+|------|----------------|
+| `home.js` | Hero headline |
+| `about.js` | Title, bio paragraphs, skills list |
+| `projects.js` | Each project’s summary + problem / approach / outcome |
+| `contact.js` | Title, intro, email |
+| `site.js` | Footer line, meta description |
+
+Empty slots render as `[[…]]` on the site until you fill them.
 
 ## Parking lot
 
-Promote to Jira when ready:
+Promote to Jira when ready (or already filed):
 
 - Blog / notes section
 - Dark/light toggle
 - Analytics
 - CMS instead of `content/projects.js`
+- **Home hero pass** — feels too AI-templated; moodboard at [21st.dev](https://21st.dev) (Themes / Heroes). Tracked: [PORT-62](https://gibbonsjacob.atlassian.net/browse/PORT-62) (E9 Research).

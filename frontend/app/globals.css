@@ -437,6 +437,239 @@ a:hover {
   margin: 0.5rem 0 0;
 }
 
+.page--wide {
+  max-width: 56rem;
+}
+
+.copy-slot {
+  display: inline;
+  color: var(--copper);
+  font-size: 0.85em;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+.about-aside__pending {
+  margin: 0;
+}
+
+.work-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.work-row {
+  border-bottom: 1px solid var(--line);
+}
+
+.work-row__link {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.35rem 0;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.15s ease;
+}
+
+@media (min-width: 768px) {
+  .work-row__link {
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    align-items: baseline;
+    gap: 2rem;
+  }
+}
+
+.work-row__link:hover {
+  color: inherit;
+}
+
+.work-row__link:hover .work-row__title {
+  color: var(--copper);
+}
+
+.work-row__title {
+  margin: 0 0 0.4rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  transition: color 0.15s ease;
+}
+
+.work-row__summary {
+  margin: 0;
+  color: var(--paper-muted);
+  font-size: 0.975rem;
+  line-height: 1.55;
+}
+
+.work-row__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--paper-muted);
+}
+
+.work-row__kind {
+  color: var(--copper);
+}
+
+.work-back {
+  text-decoration: none;
+  color: var(--paper-muted);
+}
+
+.work-back:hover {
+  color: var(--copper);
+}
+
+.project-summary {
+  margin: 0.25rem 0 0;
+  max-width: 36rem;
+  color: var(--paper-muted);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
+.project-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-section__label {
+  margin: 0 0 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+
+.contact-layout {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.75fr);
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  max-width: 28rem;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contact-field label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--paper-muted);
+}
+
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--ink-elevated);
+  color: var(--paper);
+  font: inherit;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  outline: 1px solid var(--copper);
+  outline-offset: 1px;
+}
+
+.contact-field input[aria-invalid="true"],
+.contact-field textarea[aria-invalid="true"] {
+  border-color: var(--copper);
+}
+
+.contact-error {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--copper);
+}
+
+.contact-submit {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid var(--copper);
+  background: transparent;
+  color: var(--paper);
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.contact-submit:hover:not(:disabled) {
+  color: var(--ink);
+  background: var(--copper);
+}
+
+.contact-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.contact-status {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.contact-status--ok {
+  color: var(--paper-muted);
+}
+
+.contact-status--err {
+  color: var(--copper);
+}
+
+.contact-fallbacks {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .contact-fallbacks {
+    border-top: none;
+    border-left: 1px solid var(--line);
+    padding-top: 0;
+    padding-left: 2rem;
+  }
+}
+
 @media (max-width: 640px) {
   .site-header__inner {
     flex-direction: column;
