@@ -1,16 +1,12 @@
-"""Load settings from config/app.toml with optional env overrides."""
+"""Load settings from config/app.yaml with optional env overrides."""
 
 from __future__ import annotations
 
 import os
-import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-if sys.version_info >= (3, 11):
-    import tomllib
-else:
-    import tomli as tomllib
+import yaml
 
 
 def backend_root() -> Path:
@@ -28,9 +24,9 @@ class Settings:
 
 def load_settings() -> Settings:
     root = backend_root()
-    config_path = root / "config" / "app.toml"
-    with config_path.open("rb") as fh:
-        raw = tomllib.load(fh)
+    config_path = root / "config" / "app.yaml"
+    with config_path.open(encoding="utf-8") as fh:
+        raw = yaml.safe_load(fh)
 
     db_path = Path(os.environ.get("DATABASE_PATH", raw["database_path"]))
     if not db_path.is_absolute():

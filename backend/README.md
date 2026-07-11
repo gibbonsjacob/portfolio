@@ -10,7 +10,7 @@ No `requirements.txt`. The installable package is `portfolio_api` under `backend
 
 ```
 backend/
-  config/app.toml              # defaults (CORS, DB path, flags)
+  config/app.yaml              # defaults (CORS, DB path, flags)
   db/sql_scripts/
     schema/                    # CREATE TABLE scripts (numbered)
     messages/                  # insert / list queries
@@ -49,7 +49,7 @@ API base: http://127.0.0.1:5001
 
 ## Config
 
-Defaults: [`config/app.toml`](./config/app.toml). Override with env:
+Defaults: [`config/app.yaml`](./config/app.yaml). Override with env:
 
 | Env | Meaning |
 |-----|---------|
