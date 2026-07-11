@@ -52,7 +52,7 @@ npm run dev   # usually http://localhost:3000
 
 ```bash
 uv sync                                          # first time (repo root → creates ./.venv)
-uv run --directory backend flask --app app run --debug --port 5001
+uv run --directory backend flask --app portfolio_api.app:app run --debug --port 5001
 ```
 
 Details: [`backend/README.md`](./backend/README.md).
@@ -63,7 +63,7 @@ This is the “piping” path — why the backend exists. The browser form POSTs
 
 1. **Terminal A — API**
    ```bash
-   uv run --directory backend flask --app app run --debug --port 5001
+   uv run --directory backend flask --app portfolio_api.app:app run --debug --port 5001
    ```
 2. **Terminal B — site**
    ```bash

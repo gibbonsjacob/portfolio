@@ -1,0 +1,6 @@
+# Default app settings. Env vars override these at runtime:
+#   DATABASE_PATH, CORS_ORIGINS (comma-separated), ENABLE_DEBUG_MESSAGE_LIST
+
+database_path = "data/messages.db"
+cors_origins = ["http://localhost:3000", "http://127.0.0.1:3000"]
+enable_debug_message_list = true
